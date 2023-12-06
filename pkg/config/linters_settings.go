@@ -21,6 +21,9 @@ var defaultLintersSettings = LintersSettings{
 	Dogsled: DogsledSettings{
 		MaxBlankIdentifiers: 2,
 	},
+	GoModCheck: GoModCheckSettings{
+		AllowedDependencies: []string{},
+	},
 	ErrorLint: ErrorLintSettings{
 		Errorf:      true,
 		ErrorfMulti: true,
@@ -206,6 +209,7 @@ type LintersSettings struct {
 	Goimports        GoImportsSettings
 	Golint           GoLintSettings
 	Gomnd            GoMndSettings
+	GoModCheck       GoModCheckSettings
 	GoModDirectives  GoModDirectivesSettings
 	Gomodguard       GoModGuardSettings
 	Gosec            GoSecSettings
@@ -299,6 +303,10 @@ type DepGuardList struct {
 type DepGuardDeny struct {
 	Pkg  string `mapstructure:"pkg"`
 	Desc string `mapstructure:"desc"`
+}
+
+type GoModCheckSettings struct {
+	AllowedDependencies []string `mapstructure:"allowed-dep"`
 }
 
 type DecorderSettings struct {

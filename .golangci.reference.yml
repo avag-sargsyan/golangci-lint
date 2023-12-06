@@ -229,6 +229,10 @@ linters-settings:
     # Default: 2
     max-blank-identifiers: 3
 
+  gomodcheck:
+    allowed-deps:
+      - 4d63.com/gocheckcompilerdirectives
+
   dupl:
     # Tokens count to trigger issue.
     # Default: 150
@@ -247,22 +251,11 @@ linters-settings:
     ignore:
       - "0C0C"
 
-  errcheck:
-    # Report about not checking of errors in type assertions: `a := b.(MyStruct)`.
-    # Such cases aren't reported by default.
-    # Default: false
-    check-type-assertions: true
 
     # report about assignment of errors to blank identifier: `num, _ := strconv.Atoi(numStr)`.
     # Such cases aren't reported by default.
     # Default: false
     check-blank: true
-
-    # DEPRECATED comma-separated list of pairs of the form pkg:regex
-    #
-    # the regex is used to ignore names within pkg. (default "fmt:.*").
-    # see https://github.com/kisielk/errcheck#the-deprecated-method for details
-    ignore: fmt:.*,io/ioutil:^Read.*
 
     # To disable the errcheck built-in exclude list.
     # See `-excludeonly` option in https://github.com/kisielk/errcheck#excluding-functions for details.
@@ -2333,7 +2326,6 @@ linters:
     - dupl
     - dupword
     - durationcheck
-    - errcheck
     - errchkjson
     - errname
     - errorlint
@@ -2450,10 +2442,10 @@ linters:
     - decorder
     - depguard
     - dogsled
+    - gomodcheck
     - dupl
     - dupword
     - durationcheck
-    - errcheck
     - errchkjson
     - errname
     - errorlint
@@ -2592,7 +2584,6 @@ issues:
     - path: _test\.go
       linters:
         - gocyclo
-        - errcheck
         - dupl
         - gosec
 

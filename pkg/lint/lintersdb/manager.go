@@ -74,7 +74,6 @@ func (m Manager) GetAllSupportedLinterConfigs() []*linter.Config {
 		dogsledCfg          *config.DogsledSettings
 		duplCfg             *config.DuplSettings
 		dupwordCfg          *config.DupWordSettings
-		errcheckCfg         *config.ErrcheckSettings
 		errchkjsonCfg       *config.ErrChkJSONSettings
 		errorlintCfg        *config.ErrorLintSettings
 		exhaustiveCfg       *config.ExhaustiveSettings
@@ -96,6 +95,7 @@ func (m Manager) GetAllSupportedLinterConfigs() []*linter.Config {
 		goimportsCfg        *config.GoImportsSettings
 		golintCfg           *config.GoLintSettings
 		goMndCfg            *config.GoMndSettings
+		goModCheckCfg       *config.GoModCheckSettings
 		goModDirectivesCfg  *config.GoModDirectivesSettings
 		gomodguardCfg       *config.GoModGuardSettings
 		gosecCfg            *config.GoSecSettings
@@ -158,7 +158,6 @@ func (m Manager) GetAllSupportedLinterConfigs() []*linter.Config {
 		dogsledCfg = &m.cfg.LintersSettings.Dogsled
 		duplCfg = &m.cfg.LintersSettings.Dupl
 		dupwordCfg = &m.cfg.LintersSettings.DupWord
-		errcheckCfg = &m.cfg.LintersSettings.Errcheck
 		errchkjsonCfg = &m.cfg.LintersSettings.ErrChkJSON
 		errorlintCfg = &m.cfg.LintersSettings.ErrorLint
 		exhaustiveCfg = &m.cfg.LintersSettings.Exhaustive
@@ -180,6 +179,7 @@ func (m Manager) GetAllSupportedLinterConfigs() []*linter.Config {
 		goimportsCfg = &m.cfg.LintersSettings.Goimports
 		golintCfg = &m.cfg.LintersSettings.Golint
 		goMndCfg = &m.cfg.LintersSettings.Gomnd
+		goModCheckCfg = &m.cfg.LintersSettings.GoModCheck
 		goModDirectivesCfg = &m.cfg.LintersSettings.GoModDirectives
 		gomodguardCfg = &m.cfg.LintersSettings.Gomodguard
 		gosecCfg = &m.cfg.LintersSettings.Gosec
@@ -325,6 +325,11 @@ func (m Manager) GetAllSupportedLinterConfigs() []*linter.Config {
 			WithPresets(linter.PresetStyle).
 			WithURL("https://github.com/alexkohler/dogsled"),
 
+		linter.NewConfig(golinters.NewGoModCheck(goModCheckCfg)).
+			WithSince("v1.0.0").
+			WithPresets(linter.PresetImport).
+			WithURL("https://github.com/avag-sargsyan/golangci-lint"),
+
 		linter.NewConfig(golinters.NewDupl(duplCfg)).
 			WithSince("v1.0.0").
 			WithPresets(linter.PresetStyle).
@@ -341,13 +346,6 @@ func (m Manager) GetAllSupportedLinterConfigs() []*linter.Config {
 			WithPresets(linter.PresetBugs).
 			WithLoadForGoAnalysis().
 			WithURL("https://github.com/charithe/durationcheck"),
-
-		linter.NewConfig(golinters.NewErrcheck(errcheckCfg)).
-			WithEnabledByDefault().
-			WithSince("v1.0.0").
-			WithLoadForGoAnalysis().
-			WithPresets(linter.PresetBugs, linter.PresetError).
-			WithURL("https://github.com/kisielk/errcheck"),
 
 		linter.NewConfig(golinters.NewErrChkJSONFuncName(errchkjsonCfg)).
 			WithSince("1.44.0").

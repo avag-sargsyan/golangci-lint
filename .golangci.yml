@@ -80,8 +80,8 @@ linters:
     - bodyclose
     - depguard
     - dogsled
+    - gomodcheck
     - dupl
-    - errcheck
     - exportloopref
     - funlen
     - gocheckcompilerdirectives
@@ -133,8 +133,6 @@ issues:
       linters:
         - gomnd
 
-    - path: pkg/golinters/errcheck.go
-      text: "SA1019: errCfg.Exclude is deprecated: use ExcludeFunctions instead"
     - path: pkg/commands/run.go
       text: "SA1019: lsc.Errcheck.Exclude is deprecated: use ExcludeFunctions instead"
     - path: pkg/commands/run.go
