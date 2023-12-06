@@ -1,0 +1,23 @@
+name: build-linter-plugins
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_call:
+
+jobs:
+  build-linters:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+      - name: Build Custom Linter
+        run: golangci-lint run ./...
+      - uses: actions/upload-artifact@v3
+        with:
+          name: custom-linters
+          path: build/
+          if-no-files-found: error
