@@ -3,9 +3,9 @@
 # TODO: move to config file
 prefix="github.com/golangci/golangci-lint"
 root_dir="internal"
-modules=("cache" "errorutil" "pkgcache" "renameio" "robustio")
+modules=("errorutil" "robustio")
 aggregator="errorutil"
-allowed_packages=("handlersx" "usecases")
+allowed_packages=("handlers" "repository")
 
 found=0
 generated_marker="Code generated" # TODO: maybe check for file name instead?
