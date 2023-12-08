@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # TODO: move to config file
-declare -a whitelist=("4d63.com/gocheckcompilerdirectives" "4d63.com/gochecknoglobals" "github.com/4meepo/tagalign" "github.com/Abirdcfly/dupword")
+whitelist=("4d63.com/gocheckcompilerdirectives" "4d63.com/gochecknoglobals" "github.com/4meepo/tagalign" "github.com/Abirdcfly/dupword")
 
 project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)"
 
