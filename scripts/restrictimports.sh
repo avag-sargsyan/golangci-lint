@@ -7,6 +7,7 @@ modules=("cache" "errorutil" "pkgcache" "renameio" "robustio")
 aggregator="errorutil"
 allowed_packages=("handlers" "usecases")
 
+project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)"
 found=0
 generated_marker="Code generated" # TODO: maybe check for file name instead?
 
@@ -76,7 +77,7 @@ for module in "${modules[@]}"; do
         else
             echo "Skipping generated file: $file"
         fi
-    done < <(find "$root_dir/$module" -type f -name "*.go")
+    done < <(find "$project_root/$root_dir/$module" -type f -name "*.go")
 done
 
 if [ $found -eq 1 ]; then
