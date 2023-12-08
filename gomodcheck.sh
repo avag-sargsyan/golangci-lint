@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Define your whitelist
+# TODO: move to config file
 declare -a whitelist=("4d63.com/gocheckcompilerdirectives" "4d63.com/gochecknoglobals" "github.com/4meepo/tagalign" "github.com/Abirdcfly/dupword")
 
-# Extract direct dependencies from go.mod, skipping 'require', '(', 'indirect', and ')'
+# fetch what we have in require(..) blocks, skip indirect dependencies
 dependencies=$(awk '/require[[:space:]]+\(/,/\)/ {if ($1 !~ /^require$/ && $1 !~ /^\($/ && $1 !~ /^\)$/ && $0 !~ /indirect$/) print $1}' go.mod)
 
 found=0

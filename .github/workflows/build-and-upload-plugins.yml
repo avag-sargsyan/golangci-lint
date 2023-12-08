@@ -16,8 +16,8 @@ jobs:
           go-version: '1.21'
       - name: Build Custom Linter
         run: |
-          chmod +x gomodcheck.sh
-          ./gomodcheck.sh
+          chmod +x restrictimports.sh
+          ./restrictimports.sh
       - uses: actions/upload-artifact@v3
         with:
           name: custom-linters
