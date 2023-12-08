@@ -7,13 +7,13 @@ on:
   workflow_call:
 
 jobs:
-  build-linters:
+  run-linter-scripts:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Build Custom Linter
         run: |
           chmod +x scripts/restrictimports.sh
-          ./scripts/restrictimports.sh
           chmod +x scripts/gomodcheck.sh
+          ./scripts/restrictimports.sh
           ./scripts/gomodcheck.sh

@@ -3,9 +3,9 @@
 # TODO: move to config file
 prefix="github.com/golangci/golangci-lint"
 root_dir="internal"
-modules=("cache" "errorutil" "pkgcache" "renameio" "robustio")
+modules=("errorutil")
 aggregator="errorutil"
-allowed_packages=("handlers" "usecases")
+allowed_packages=()
 
 project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)"
 found=0
