@@ -1,0 +1,12 @@
+prefix: "github.com/golangci/golangci-lint"
+root_dir: "internal"
+modules:
+  - "cache"
+  - "errorutil"
+  - "pkgcache"
+  - "renameio"
+  - "robustio"
+aggregator: "errorutil"
+allowed_packages:
+  - "handlers"
+  - "usecases"

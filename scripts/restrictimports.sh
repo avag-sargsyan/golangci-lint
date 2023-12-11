@@ -1,15 +1,24 @@
 #!/bin/bash
 
 # TODO: move to config file
-prefix="github.com/golangci/golangci-lint"
-root_dir="internal"
-modules=("cache" "errorutil" "pkgcache" "renameio" "robustio")
-aggregator="errorutil"
-allowed_packages=("handlers" "usecases")
+#prefix="github.com/golangci/golangci-lint"
+#root_dir="internal"
+#modules=("cache" "errorutil" "pkgcache" "renameio" "robustio")
+#aggregator="errorutil"
+#allowed_packages=("handlers" "usecases")
 
 project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. && pwd)"
 found=0
 generated_marker="Code generated" # TODO: maybe check for file name instead?
+
+config_file="$project_root/scripts/config/restrictimports-config.yml"
+
+# Use "yq" to read values from the YAML file, needs to be installed on the environment
+prefix=$(yq e '.prefix' "$config_file")
+root_dir=$(yq e '.root_dir' "$config_file")
+modules=($(yq e '.modules[]' "$config_file"))
+aggregator=$(yq e '.aggregator' "$config_file")
+allowed_packages=($(yq e '.allowed_packages[]' "$config_file"))
 
 check_imports() {
     local file=$1
