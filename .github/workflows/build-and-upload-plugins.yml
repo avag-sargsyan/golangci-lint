@@ -15,6 +15,7 @@ jobs:
         run: |
           sudo wget -O /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64"
           sudo chmod +x /usr/local/bin/yq
+          echo "yq version: $(yq --version)"
       - name: Run Linter Scripts
         run: |
           chmod +x scripts/restrictimports.sh
