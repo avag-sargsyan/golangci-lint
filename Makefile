@@ -108,3 +108,17 @@ expand_website_templates:
 update_contributors_list:
 	cd .github/contributors && npm run all
 
+SCRIPTS_DIR := ./scripts
+
+.PHONY: cl_all restrictimports gomodcheck
+
+cl_all: restrictimports gomodcheck
+
+restrictimports:
+	chmod +x $(SCRIPTS_DIR)/restrictimports.sh
+	@bash $(SCRIPTS_DIR)/restrictimports.sh
+
+gomodcheck:
+	chmod +x $(SCRIPTS_DIR)/gomodcheck.sh
+	@bash $(SCRIPTS_DIR)/gomodcheck.sh
+

@@ -18,7 +18,4 @@ jobs:
           echo "yq version: $(yq --version)"
       - name: Run Linter Scripts
         run: |
-          chmod +x scripts/restrictimports.sh
-          chmod +x scripts/gomodcheck.sh
-          ./scripts/restrictimports.sh
-          ./scripts/gomodcheck.sh
+          make cl_all

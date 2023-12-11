@@ -13,7 +13,7 @@ generated_marker="Code generated" # TODO: maybe check for file name instead?
 
 config_file="$project_root/scripts/config/restrictimports-config.yml"
 
-# Use "yq" to read values from the YAML file, needs to be installed on the environment
+# using "yq" to read values from the YAML file, needs to be installed on the environment
 prefix=$(yq e '.prefix' "$config_file")
 root_dir=$(yq e '.root_dir' "$config_file")
 modules=($(yq e '.modules[]' "$config_file"))
@@ -76,6 +76,8 @@ check_imports() {
         fi
     done < <(grep -E "^(import[[:space:]]+\(|[[:space:]]*\)|[[:space:]]*\".*\")$" "$file")
 }
+
+echo "Running restrictimports..."
 
 for module in "${modules[@]}"; do
     echo "Checking module: $module"
