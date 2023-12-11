@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Build Custom Linter
+      - name: Install dependencies
+        run: |
+          sudo wget -O /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64"
+          sudo chmod +x /usr/local/bin/yq
+      - name: Run Linter Scripts
         run: |
           chmod +x scripts/restrictimports.sh
           chmod +x scripts/gomodcheck.sh

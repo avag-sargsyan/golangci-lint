@@ -1,0 +1,8 @@
+allowed-dep:
+  - 4d63.com/gocheckcompilerdirectives
+  - 4d63.com/gochecknoglobals
+  - github.com/4meepo/tagalign
+  - github.com/Abirdcfly/dupword
+  - github.com/Antonboom/errname
+  - github.com/Antonboom/nilnil
+  - github.com/Antonboom/testifylint
