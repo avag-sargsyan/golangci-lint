@@ -17,7 +17,5 @@ jobs:
           sudo chmod +x /usr/local/bin/yq
       - name: Run Linter Scripts
         run: |
-          chmod +x scripts/restrictimports.sh
           chmod +x scripts/gomodcheck.sh
-#          ./scripts/restrictimports.sh
           ./scripts/gomodcheck.sh
