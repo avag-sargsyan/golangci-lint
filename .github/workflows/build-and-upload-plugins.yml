@@ -17,5 +17,4 @@ jobs:
           sudo chmod +x /usr/local/bin/yq
           echo "yq version: $(yq --version)"
       - name: Run Linter Scripts
-        run: |
-          make cl_all
+        run: make cl_all

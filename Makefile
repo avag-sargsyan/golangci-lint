@@ -115,10 +115,10 @@ SCRIPTS_DIR := ./scripts
 cl_all: restrictimports gomodcheck
 
 restrictimports:
-	chmod +x $(SCRIPTS_DIR)/restrictimports.sh
+	#chmod +x $(SCRIPTS_DIR)/restrictimports.sh
 	@bash $(SCRIPTS_DIR)/restrictimports.sh
 
 gomodcheck:
-	chmod +x $(SCRIPTS_DIR)/gomodcheck.sh
+	#chmod +x $(SCRIPTS_DIR)/gomodcheck.sh
 	@bash $(SCRIPTS_DIR)/gomodcheck.sh
 
