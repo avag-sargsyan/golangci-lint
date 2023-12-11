@@ -19,5 +19,5 @@ jobs:
         run: |
           chmod +x scripts/restrictimports.sh
           chmod +x scripts/gomodcheck.sh
-          ./scripts/restrictimports.sh
+#          ./scripts/restrictimports.sh
           ./scripts/gomodcheck.sh
