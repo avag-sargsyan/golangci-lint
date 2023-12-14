@@ -7,14 +7,30 @@ on:
   workflow_call:
 
 jobs:
-  run-linter-scripts:
-    runs-on: ubuntu-latest
+  restrictimports:
+    runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - name: Format Go code
+        run: go fmt ./...
       - name: Install dependencies
         run: |
           sudo wget -O /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64"
           sudo chmod +x /usr/local/bin/yq
           echo "yq version: $(yq --version)"
-      - name: Run Linter Scripts
-        run: make cl_all
+      - name: Run restrictimports
+        run: make restrictimports
+
+  gomodcheck:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - name: Format Go code
+        run: go fmt ./...
+      - name: Install dependencies
+        run: |
+          sudo wget -O /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64"
+          sudo chmod +x /usr/local/bin/yq
+          echo "yq version: $(yq --version)"
+      - name: Run gomodcheck
+        run: make gomodcheck

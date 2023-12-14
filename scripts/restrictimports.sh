@@ -8,6 +8,13 @@ prefix=$(yq e '.prefix' "$config_file")
 root_dir=$(yq e '.root_dir' "$config_file")
 modules=($(yq e '.modules[]' "$config_file"))
 aggregator=$(yq e '.aggregator' "$config_file")
+
+# Check if yq is installed
+if ! command -v yq &> /dev/null; then
+    echo "yq is not installed"
+    exit 1
+fi
+
 allowed_packages=($(yq e '.allowed_packages[]' "$config_file"))
 
 found=0
